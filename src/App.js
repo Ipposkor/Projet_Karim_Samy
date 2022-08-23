@@ -1,7 +1,8 @@
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Favorite from './component/Favorite';
+import Search from './component/Search';
 
 import './App.css';
 
@@ -11,11 +12,21 @@ function App() {
       <Search />
 
       <Switch>
-        <Route path={"/"}>
+
+
+        <Route path={"/Favoris"}>
+          <Link to="/">
+            <div>
+              back
+            </div>
+          </Link>
+          <Favorite />
 
         </Route>
-        <Route path={"/Favoris"}>
-          <Favorite />
+
+
+        <Route path={"/"}>
+
         </Route>
 
       </Switch>
