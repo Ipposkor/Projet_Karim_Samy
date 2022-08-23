@@ -3,7 +3,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Favorite from './component/Favorite';
 import Search from './component/Search';
-
 import './App.css';
 
 function App() {
@@ -15,17 +14,8 @@ function App() {
 
 
         <Route path={"/Favoris"}>
-          <Link to="/">
-            <div>
-              back
-            </div>
-          </Link>
+
           <Favorite />
-
-        </Route>
-
-
-        <Route path={"/"}>
 
         </Route>
 
