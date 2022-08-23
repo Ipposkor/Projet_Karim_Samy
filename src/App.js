@@ -1,7 +1,3 @@
-import { Route, Switch,Link } from 'react-router-dom';
-import axios from 'axios';
-import React,{useState, useEffect} from 'react';
-import './App.css';
 import Card from './component/card/Card';
 
 function App() {
@@ -15,18 +11,9 @@ function App() {
 
   return (
     <div className="App">
-      <Link to={"/"}>
-        <button>HOME</button>
-      </Link>
       <Switch>
         
-        <Route path={"/Favoris"}>
-
-        </Route>
         <Route path={"/"}>
-          <Link to={"/Favoris"}>
-            <span>fav</span>
-          </Link>
           {movies.map((item,index)=>{
             return <Card key={index} item={item} />
           })}
