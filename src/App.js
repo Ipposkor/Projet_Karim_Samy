@@ -12,9 +12,10 @@ function App() {
 
 
   const [movies, setMovies] = useState([])
-  const [anime,setAnime] = useState([])
-  const animeFav = (expense)=>{
-    setAnime((prevExpense) =>{
+  const [anime, setAnime] = useState('')
+  const [fav, setFav] = useState('inner-movie')
+  const animeFav = (expense) => {
+    setAnime((prevExpense) => {
       return ([expense, ...prevExpense]);
     })
   }
@@ -36,6 +37,7 @@ function App() {
 
 
 
+
   return (
     <div className="App">
       <Header getManga={inputChangeHandler} />
@@ -44,23 +46,18 @@ function App() {
 
         <Route path={"/Favoris"}>
           {movies.map((item, index) => {
-            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite id={index} item={item} /> : <Favorite id={index} item={item} stock={data} />
+            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite getDel={() => setFav('dnone')} fav={fav} stock={anime} id={index} item={item} /> : null
           })}
         </Route>
 
         {/* PAGE PRINCPALE */}
-
-        </Route>
 
         <Route path={"/"}>
           <div className='main'>
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput)) {
                 return (
-                  <div>
-
-                    <Card key={index} item={item} goFav={animeFav}/>
-                  </div>
+                  <Card id={index} key={index} item={item} goFav={animeFav} />
                 );
               }
             })}
