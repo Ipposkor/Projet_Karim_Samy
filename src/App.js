@@ -26,11 +26,9 @@ function App() {
       console.log(response)
     }).catch(err => { console.log(err) })
   }, [])
-
-  console.log(fav);
-
   return (
     <div className="App">
+      <Header getManga={inputChangeHandler} />
       <Switch>
         <Route path={"/Favoris"}>
 
@@ -40,17 +38,7 @@ function App() {
               <button>Go Home !</button>
             </Link>
         </Route>
-
         <Route path={"/"}>
-          <Link to={"/Favoris"}>
-            <span>fav</span>
-          </Link>
-
-          {movies.map((item, index) => {
-            return <Card key={index} item={item} />
-          })}
-
-          <Header getManga={inputChangeHandler} />
           <div className='main'>
             {movies.map((item,index)=>{
               if(item.title.toLowerCase().includes(filteredInput)){

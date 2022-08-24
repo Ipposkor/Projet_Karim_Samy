@@ -17,9 +17,8 @@ function Card(props){
                     <button className='btnFav' id={props.item.title} onClick={getID}><img className='fav' src={fav} alt="" /></button>
                 </div>
             </div>
-
-      
-    );
+        </div>
+        );
 }
 
 export default Card;

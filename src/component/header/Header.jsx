@@ -10,10 +10,10 @@ function Header(props){
     }
     return(
         <div className='header'>
-            <input className='search' type="text" placeholder='Search' onChange={getAnime}/>
             <Link to={"/Favoris"}>
                 <img className='fav' src={fav} alt="" />
             </Link>
+            <input className='search' type="text" placeholder='Search' onChange={getAnime}/>
         </div>
         );
 }

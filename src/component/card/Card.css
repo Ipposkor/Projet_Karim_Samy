@@ -9,6 +9,7 @@
     flex-direction: row;
     justify-content: space-between;
     height: 90px;
+    
 }
 .details{
     display: flex;
@@ -17,7 +18,7 @@
 }
 .btnFav{
     border: none;
-    background-color: rgba(2,13,24,255);
+    background-color: rgba(3,13,25,255);
 }
 .title{
     overflow: hidden;
@@ -25,4 +26,7 @@
 }
 .score{
     color: rgba(245,181,10,255);
+}
+.fav{
+    height: 10px;
 }

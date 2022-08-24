@@ -1,17 +1,19 @@
 .header{
-    background-color: rgb(101, 101, 101);
-    width: 420px;
     display: flex;
     flex-direction: row;
-    margin: auto;
+    justify-content: center;
+    height: 50px;
 }
 .fav{
-    height: 20px;
+    height: 50px;
     display: flex;
     align-self: center;
-    padding: 0 10px;
+    background-color: rgba(35,58,80,255);
 }
 .search{
-    height: 30px;
-    width: 400px;
+    width: 1010px;
+    background-color: rgba(35,58,80,255);
+    color: white;
+    border: none;
+    padding: 0 10px;
 }
