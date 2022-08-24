@@ -11,7 +11,9 @@ function Header(props) {
     return (
         <div className='header'>
             <Link to={"/Favoris"}>
-                <img className='fav ' src={fav} alt="" />
+
+                <img className='favHeader' src={fav} alt="" />
+
             </Link>
             <Link to={"/"}>
                 <button>test</button>

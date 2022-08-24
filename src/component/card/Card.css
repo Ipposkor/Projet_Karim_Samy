@@ -19,6 +19,7 @@
 .btnFav{
     border: none;
     background-color: rgba(3,13,25,255);
+    color: yellowgreen;
 }
 .title{
     overflow: hidden;
@@ -28,5 +29,8 @@
     color: rgba(245,181,10,255);
 }
 .fav{
-    height: 10px;
+    height: 20px;
+    background-color: rgba(3,13,25,255);
+    cursor: pointer;
+    position: absolute
 }

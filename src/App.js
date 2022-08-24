@@ -12,6 +12,13 @@ function App() {
 
 
   const [movies, setMovies] = useState([])
+  const [anime,setAnime] = useState([])
+  const animeFav = (expense)=>{
+    setAnime((prevExpense) =>{
+      return ([expense, ...prevExpense]);
+    })
+  }
+  console.log(anime);
   const [filteredInput, setFilteredInput] = useState('');
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
@@ -43,13 +50,16 @@ function App() {
 
         {/* PAGE PRINCPALE */}
 
+        </Route>
+
         <Route path={"/"}>
           <div className='main'>
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput)) {
                 return (
                   <div>
-                    <Card key={index} item={item} />
+
+                    <Card key={index} item={item} goFav={animeFav}/>
                   </div>
                 );
               }
