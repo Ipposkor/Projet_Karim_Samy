@@ -47,6 +47,7 @@ function App() {
         <Route path={"/Favoris"}>
           {movies.map((item, index) => {
             return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite getDel={() => setFav('dnone')} fav={fav} stock={anime} id={index} item={item} /> : null
+
           })}
         </Route>
 
@@ -58,6 +59,7 @@ function App() {
               if (item.title.toLowerCase().includes(filteredInput)) {
                 return (
                   <Card id={index} key={index} item={item} goFav={animeFav} />
+
                 );
               }
             })}

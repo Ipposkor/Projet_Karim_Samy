@@ -3,34 +3,60 @@
     flex-direction: column;
     height: auto;
     width: 200px;
+    background-color: rgb(53, 53, 53);
+    border-radius: 20px;
+    overflow: hidden;
+    justify-content: space-between;
+    transition: all 1s linear;
+    position: relative;
+}
+.card:hover{
+    box-shadow: 0 0 15px rgb(131, 131, 131);
+    transform: rotateY(180deg);
 }
 .cardBottom{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 90px;
-    
+    padding: 0 15px;
+    gap: 5px;
 }
 .details{
     display: flex;
     flex-direction: column;
     align-self: center;
+    gap: 10px;
+    margin-top: -15px;
 }
 .btnFav{
     border: none;
-    background-color: rgba(3,13,25,255);
-    color: yellowgreen;
 }
 .title{
     overflow: hidden;
-    /* overflow-x: hidden; */
+
 }
 .score{
     color: rgba(245,181,10,255);
 }
 .fav{
     height: 20px;
-    background-color: rgba(3,13,25,255);
+
     cursor: pointer;
-    position: absolute
+    position: absolute;
+    margin-left: -10px;
+}
+.card:hover .faceCover{
+    display: none;
+}
+.card:hover .cardBottom{
+    transform: rotateY(180deg);
+}
+.card:hover .faceSynopsis{
+    display: flex;
+    transform: rotateY(180deg);
+    padding: 0 10px;
+}
+.faceSynopsis{
+    display: none;
 }
