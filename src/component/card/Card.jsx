@@ -4,12 +4,13 @@ import fav from '../../images/fav-pink.png'
 
 
 
-function Card(props){
-    function getID(e){
+function Card(props) {
+    function getID(e) {
         props.goFav(e.target.id);
     }
     return (
         <div className='card'>
+
             <div className='faceCover'>
                 <img className='img' src={props.item.image_url} alt="" />
             </div>
