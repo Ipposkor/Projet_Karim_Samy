@@ -1,0 +1,17 @@
+.header{
+    background-color: rgb(101, 101, 101);
+    width: 420px;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+.fav{
+    height: 20px;
+    display: flex;
+    align-self: center;
+    padding: 0 10px;
+}
+.search{
+    height: 30px;
+    width: 400px;
+}

@@ -1,0 +1,28 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 200px;
+}
+.cardBottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 90px;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.btnFav{
+    border: none;
+    background-color: rgba(2,13,24,255);
+}
+.title{
+    overflow: hidden;
+    /* overflow-x: hidden; */
+}
+.score{
+    color: rgba(245,181,10,255);
+}
