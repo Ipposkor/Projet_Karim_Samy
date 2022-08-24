@@ -44,23 +44,18 @@ function App() {
 
         <Route path={"/Favoris"}>
           {movies.map((item, index) => {
-            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite id={index} item={item} /> : <Favorite id={index} item={item} stock={data} />
+            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite id={index} item={item} /> : <Favorite id={index} item={item} stock={anime} />
           })}
         </Route>
 
         {/* PAGE PRINCPALE */}
-
-        </Route>
 
         <Route path={"/"}>
           <div className='main'>
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput)) {
                 return (
-                  <div>
-
                     <Card key={index} item={item} goFav={animeFav}/>
-                  </div>
                 );
               }
             })}

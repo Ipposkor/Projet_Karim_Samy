@@ -10,17 +10,22 @@ function Card(props){
     }
     return (
         <div className='card'>
-            <img className='img' src={props.item.image_url} alt="" />
-            <div className='cardBottom'>
-                <h3 className='title'>{props.item.title}</h3>
-                <div className='details'>
-                    <span className='score'>{props.item.score}</span>
-                    <div>
-                        <img className='fav' src={fav} alt="" id={props.item.title} onClick={getID}/>
+            <div className='faceCover'>
+                <img className='img' src={props.item.image_url} alt="" />
+            </div>
+            <div className='faceSynopsis'>
+                <span className='synopsis'>{props.item.synopsis}</span>
+            </div>
+                <div className='cardBottom'>
+                    <h3 className='title'>{props.item.title}</h3>
+                    <div className='details'>
+                        <span className='score'>{props.item.score}</span>
+                        <div>
+                            <img className='fav' src={fav} alt="" id={props.item.title} onClick={getID}/>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            
         </div>
 
 
