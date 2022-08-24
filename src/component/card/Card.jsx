@@ -3,11 +3,11 @@ import './Card.css'
 import fav from '../../images/fav-pink.png'
 
 
-function Card(props){
-    function getID(e){
+function Card(props) {
+    function getID(e) {
         console.log(e.target.id);
     }
-    return(
+    return (
         <div className='card'>
             <img className='img' src={props.item.image_url} alt="" />
             <div className='cardBottom'>
@@ -17,11 +17,11 @@ function Card(props){
                     <button className='btnFav' id={props.item.title} onClick={getID}><img className='fav' src={fav} alt="" /></button>
                 </div>
             </div>
-            </div>
 
-      
-    );
-}
+        </div>
 
-export default Card;
-{/* <div className='overview'>{props.item.synopsis}</div> */}
+
+    )
+};
+
+export default Card

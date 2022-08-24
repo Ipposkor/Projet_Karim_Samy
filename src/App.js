@@ -27,25 +27,23 @@ function App() {
   }, [])
 
 
+
+
   return (
     <div className="App">
-
+      <Header getManga={inputChangeHandler} />
       <Switch>
         {/* PAGE FAVORIS */}
 
         <Route path={"/Favoris"}>
           {movies.map((item, index) => {
-            item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite id={index} item={item} /> : null
+            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite id={index} item={item} /> : <Favorite id={index} item={item} stock={data} />
           })}
         </Route>
 
         {/* PAGE PRINCPALE */}
 
         <Route path={"/"}>
-          <Link to={"/Favoris"}>
-            <span>fav</span>
-          </Link>
-          <Header getManga={inputChangeHandler} />
           <div className='main'>
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput)) {
@@ -64,5 +62,3 @@ function App() {
 }
 
 export default App;
-
-// return <Card key={index} item={item} />

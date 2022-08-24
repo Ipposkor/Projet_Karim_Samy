@@ -4,15 +4,18 @@ import './Favorite.css'
 
 
 const Favorite = (props) => {
+    const getID = (e) => {
+        console.log(e.target.id);
+    }
     return (
-        <div className='inner-movie'    >
+        <div className={props.stock == 0 ? 'dnone' : 'inner-movie'}   >
             {/* <Search /> */}
             <div >
                 <img src={props.item.image_url} alt="" />
             </div>
             <div className='infos'>
                 <div className='cancel'>
-                    <h1>{props.item.title} </h1>
+                    <h1 id={props.item.title} onClick={getID}>{props.item.title} </h1>
                     <span>x</span>
 
                 </div>
