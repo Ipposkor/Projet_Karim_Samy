@@ -3,11 +3,12 @@ import './Card.css'
 import fav from '../../images/fav-pink.png'
 
 
+
 function Card(props){
     function getID(e){
         props.goFav(e.target.id);
     }
-    return(
+    return (
         <div className='card'>
             <img className='img' src={props.item.image_url} alt="" />
             <div className='cardBottom'>
@@ -19,9 +20,11 @@ function Card(props){
                     </div>
                 </div>
             </div>
-        </div>
-        );
-}
 
-export default Card;
-{/* <div className='overview'>{props.item.synopsis}</div> */}
+        </div>
+
+
+    )
+};
+
+export default Card

@@ -36,3 +36,13 @@ body {
 .infos {
     margin-left: 20px;
 }
+
+.cancel {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+
+.cancel span {
+    cursor: pointer;
+}

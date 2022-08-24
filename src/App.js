@@ -3,13 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
-
 import Favorite from './component/Favoris/Favorite';
-import Search from './component/Favoris/Search';
+
 import Card from './component/card/Card';
 import Header from './component/header/Header';
 
 function App() {
+
+
+  const [movies, setMovies] = useState([])
   const [anime,setAnime] = useState([])
   const animeFav = (expense)=>{
     setAnime((prevExpense) =>{
@@ -22,43 +24,51 @@ function App() {
     setFilteredInput(selectedAnime);
     console.log('agg');
   };
-  const [movies,setMovies] = useState([])
 
-  useEffect(()=>{
-  axios.get('https://api.jikan.moe/v3/search/anime?q=onepiece').then((response)=>{
+  useEffect(() => {
+    axios.get('https://api.jikan.moe/v3/search/anime?q=onepiece').then((response) => {
 
       setMovies(response.data.results)
       console.log(response)
     }).catch(err => { console.log(err) })
   }, [])
+
+
+
+
   return (
     <div className="App">
       <Header getManga={inputChangeHandler} />
       <Switch>
+        {/* PAGE FAVORIS */}
+
         <Route path={"/Favoris"}>
+          {movies.map((item, index) => {
+            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite id={index} item={item} /> : <Favorite id={index} item={item} stock={data} />
+          })}
+        </Route>
+
+        {/* PAGE PRINCPALE */}
 
         </Route>
+
         <Route path={"/"}>
           <div className='main'>
-            {movies.map((item,index)=>{
-              if(item.title.toLowerCase().includes(filteredInput)){
-                return(
+            {movies.map((item, index) => {
+              if (item.title.toLowerCase().includes(filteredInput)) {
+                return (
                   <div>
+
                     <Card key={index} item={item} goFav={animeFav}/>
                   </div>
                 );
               }
             })}
           </div>
-
         </Route>
-
       </Switch>
-
-    </div>
+    </div >
   );
 }
 
 export default App;
-
-// return <Card key={index} item={item} />
