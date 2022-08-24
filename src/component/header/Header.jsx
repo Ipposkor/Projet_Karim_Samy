@@ -11,7 +11,7 @@ function Header(props){
     return(
         <div className='header'>
             <Link to={"/Favoris"}>
-                <img className='fav' src={fav} alt="" />
+                <img className='favHeader' src={fav} alt="" />
             </Link>
             <input className='search' type="text" placeholder='Search' onChange={getAnime}/>
         </div>

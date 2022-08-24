@@ -10,8 +10,13 @@ import Card from './component/card/Card';
 import Header from './component/header/Header';
 
 function App() {
-
-
+  const [anime,setAnime] = useState([])
+  const animeFav = (expense)=>{
+    setAnime((prevExpense) =>{
+      return ([expense, ...prevExpense]);
+    })
+  }
+  console.log(anime);
   const [filteredInput, setFilteredInput] = useState('');
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
@@ -32,11 +37,6 @@ function App() {
       <Switch>
         <Route path={"/Favoris"}>
 
-
-          <Favorite />
-            <Link to={"/"}>
-              <button>Go Home !</button>
-            </Link>
         </Route>
         <Route path={"/"}>
           <div className='main'>
@@ -44,7 +44,7 @@ function App() {
               if(item.title.toLowerCase().includes(filteredInput)){
                 return(
                   <div>
-                    <Card key={index} item={item}/>
+                    <Card key={index} item={item} goFav={animeFav}/>
                   </div>
                 );
               }
