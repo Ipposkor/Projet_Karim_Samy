@@ -4,7 +4,6 @@ import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import Favorite from './component/Favoris/Favorite';
-
 import Card from './component/card/Card';
 import Header from './component/header/Header';
 
@@ -14,6 +13,7 @@ function App() {
   const [movies, setMovies] = useState([])
   const [anime, setAnime] = useState('')
   const [fav, setFav] = useState('inner-movie')
+
   const animeFav = (expense) => {
     setAnime((prevExpense) => {
       return ([expense, ...prevExpense]);
@@ -34,6 +34,11 @@ function App() {
     }).catch(err => { console.log(err) })
   }, [])
 
+  useEffect(() => {
+    animeFav()
+
+  })
+
 
 
 
@@ -46,8 +51,7 @@ function App() {
 
         <Route path={"/Favoris"}>
           {movies.map((item, index) => {
-            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite getDel={() => setFav('dnone')} fav={fav} stock={anime} id={index} item={item} /> : null
-
+            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite delete={() => setFav('dnone')} stock={anime} id={index} item={item} /> : null
           })}
         </Route>
 
@@ -59,7 +63,6 @@ function App() {
               if (item.title.toLowerCase().includes(filteredInput)) {
                 return (
                   <Card id={index} key={index} item={item} goFav={animeFav} />
-
                 );
               }
             })}
