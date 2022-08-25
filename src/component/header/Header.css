@@ -10,6 +10,15 @@
     align-self: center;
     background-color: rgba(35,58,80,255);
 }
+.homeHeader{
+    height: 50px;
+    display: flex;
+    align-self: center;
+    background-color: rgba(35,58,80,255);
+}
+.iconNone{
+    display: none;
+}
 .search{
     width: 1010px;
     background-color: rgba(35,58,80,255);
