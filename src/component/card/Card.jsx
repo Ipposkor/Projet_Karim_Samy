@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Card.css'
-import fav from '../../images/fav-pink.png'
+import fav from '../../images/fav.png'
 
 
 
@@ -10,24 +10,18 @@ function Card(props) {
         props.goFav(e.target.id);
     }
     return (
-        <div className='card'>
-
-            <div className='faceCover'>
-                <img className='img' src={props.item.image_url} alt="" />
-            </div>
-            <div className='faceSynopsis'>
-                <span className='synopsis'>{props.item.description}</span>
-            </div>
-                <div className='cardBottom'>
-                    <h3 className='title'>{props.item.title}</h3>
-                    <div className='details'>
-                        <span className='score'>{props.item.rating}</span>
-                        <div>
-                            <img className='fav' src={fav} alt="" id={props.item.title} onClick={getID}/>
-                        </div>
-                    </div>
+        <div className='cardBox'>
+            <div className='card'>
+                <div className='faceCover'>
+                    <img className='img' src={props.item.image_url} alt="" />
+                    <img className='fav' src={fav} alt="" id={props.item.title} onClick={getID}/>
                 </div>
-            
+                <div className='cardSide'>
+                    <span className='title'>{props.item.title}</span>
+                    <span className='author'>{props.item.authors}</span>
+                    <span className='score'><span className='rating'>Rating: </span>{props.item.rating}</span>
+                </div>
+            </div>
         </div>
 
 
