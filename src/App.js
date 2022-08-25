@@ -15,12 +15,11 @@ function App() {
   const [anime, setAnime] = useState('')
   const [fav, setFav] = useState('inner-movie')
 
-  const animeFav = (expense) => {
-    setAnime((prevExpense) => {
-      return ([expense, ...prevExpense]);
+  const animeFav = (book) => {
+    setAnime((prevBook) => {
+      return ([book, ...prevBook]);
     })
   }
-  console.log(anime);
   const [filteredInput, setFilteredInput] = useState('');
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
@@ -46,9 +45,9 @@ function App() {
 
 
 
-  const [favorite,setFavorite] = useState('favHeader')
-  const [home,setHome] = useState('iconNone')
-  const changeMenu = () =>{
+  const [favorite, setFavorite] = useState('favHeader')
+  const [home, setHome] = useState('iconNone')
+  const changeMenu = () => {
     setFavorite('iconNone')
     setHome('favHeader')
   }
