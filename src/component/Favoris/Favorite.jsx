@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
+import book from '../../images/open-book.png'
 import axios from 'axios'
 import './Favorite.css'
+import bookread from '../../images/read.png'
+
 import { Link } from 'react-router-dom'
 
 
@@ -16,24 +19,35 @@ const Favorite = (props) => {
         console.log(delfav)
     }
 
+    const reading = (event) => {
+        // props.doneReading(event.target.id)
+    }
+
     return (
-        <div className={props.stock.includes(props.item.title) ? props.display : 'dnone'}   >
+        <div className={props.stock.includes(props.item.title) ? props.read + ' inner-movie' : 'dnone'}   >
             {/* <Search /> */}
-            <div >
-                <img src={props.item.image_url} alt="" />
+            <div className='inner-book'  >
+                <img className='img-img' src={props.item.image_url} alt="" />
             </div>
             <div className='infos'>
                 <div className='cancel'>
-                    <h1 id={props.item.title} onClick={getID}>{props.item.title} </h1>
+                    <div className='title-view'>
+
+                        <h1 id={props.item.title} onClick={getID}>{props.item.title} </h1>
+                        <img key={props.item.id} id={props.item.title} onClick={reading} className='book' src={props.bkrd.includes(props.item.title) ? bookread : book} alt="" />
+                    </div>
                     <span id={props.item.title} onClick={getDel}>x</span>
                 </div>
-                <h4> </h4>
-                <h4>SCORE: {props.item.score} </h4>
-                <h4>DESCRIPTION: </h4>
-                <p>{props.item.synopsis}</p>
+                <span>Pages: {props.item.num_pages}</span>
+                <br />
+                <span>Score: {props.item.rating}</span>
+                <br />
+
+                <span>Genre: {props.item.genres}</span>
+
+                <p>{props.item.description}</p>
             </div>
-        </div>
-    )
+        </div>)
 }
 
 export default Favorite
