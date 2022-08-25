@@ -29,7 +29,6 @@ function App() {
 
   useEffect(() => {
     axios.get('https://example-data.draftbit.com/books/').then((response) => {
-
       setMovies(response.data)
       console.log(response)
     }).catch(err => { console.log(err) })

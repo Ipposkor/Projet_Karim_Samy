@@ -53,6 +53,8 @@
     height: 20px;
     cursor: pointer;
     position: absolute;
+    top: 92%;
+    left: 85%;
     margin-left: -10px;
 }
 .fav_like{
