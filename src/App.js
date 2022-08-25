@@ -6,48 +6,55 @@ import './App.css';
 import Favorite from './component/Favoris/Favorite';
 import Card from './component/card/Card';
 import Header from './component/header/Header';
+import book from './images/open-book.png'
+import bookread from './images/read.png'
 
 
 function App() {
 
 
   const [movies, setMovies] = useState([])
-  const [anime, setAnime] = useState('')
-  const [fav, setFav] = useState('inner-movie')
-
-  const animeFav = (expense) => {
-    setAnime((prevExpense) => {
-      return ([expense, ...prevExpense]);
-    })
-  }
-  console.log(anime);
+  const [anime, setAnime] = useState([])
+  const [favorite, setFavorite] = useState('favHeader')
+  const [home, setHome] = useState('iconNone')
   const [filteredInput, setFilteredInput] = useState('');
+  const [book, setBook] = useState([]);
+
+
+  const animeFav = (book) => {
+    setAnime((prevBook) => {
+      return ([book, ...prevBook]);
+    })
+
+  }
+
+  const onReadBook = (e) => {
+    setBook((prevBook) => {
+      return ([e, ...prevBook])
+    })
+    console.log(book)
+  }
+
+
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
-    console.log('agg');
   };
 
   useEffect(() => {
     axios.get('https://example-data.draftbit.com/books/').then((response) => {
       setMovies(response.data)
-      console.log(response)
+      // console.log(response)
     }).catch(err => { console.log(err) })
-  }, [])
-
+  }, [anime])
 
   useEffect(() => {
     animeFav()
-
-  })
-
+  }, [movies])
 
 
 
 
-
-  const [favorite,setFavorite] = useState('favHeader')
-  const [home,setHome] = useState('iconNone')
-  const changeMenu = () =>{
+  const changeMenu = () => {
     setFavorite('iconNone')
     setHome('favHeader')
   }
@@ -64,7 +71,7 @@ function App() {
 
         <Route path={"/Favoris"}>
           {movies.map((item, index) => {
-            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite delete={() => setFav('dnone')} stock={anime} id={index} item={item} /> : null
+            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite bkrd={book} key={index} reading={onReadBook} stock={anime} id={item.id} item={item} /> : null
           })}
         </Route>
 
@@ -75,7 +82,7 @@ function App() {
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput)) {
                 return (
-                  <Card id={index} key={index} item={item} goFav={animeFav} />
+                  <Card id={index} key={index} item={item} goFav={() => { animeFav(item.title) }} />
                 );
               }
             })}
