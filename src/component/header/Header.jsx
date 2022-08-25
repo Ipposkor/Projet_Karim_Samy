@@ -1,5 +1,6 @@
 import './Header.css'
 import fav from '../../images/favoris.png'
+import home from '../../images/home.png'
 import { Link } from 'react-router-dom';
 
 function Header(props) {
@@ -8,15 +9,20 @@ function Header(props) {
             props.getManga(event.target.value)
         );
     }
+
+    function FavClick(){
+        props.changeFav()
+    }
+    function HomeClick(){
+        props.changeHome()
+        }
     return (
         <div className='header'>
             <Link to={"/Favoris"}>
-
-                <img className='favHeader' src={fav} alt="" />
-
+                <img className= {props.FavClick} src={fav} alt="" onClick={FavClick}/>
             </Link>
             <Link to={"/"}>
-                <button>test</button>
+                <img className= {props.HomeClick} src={home} alt="" onClick={HomeClick} />
             </Link>
 
             <input className='search' type="text" placeholder='Search' onChange={getAnime} />

@@ -4,9 +4,9 @@ import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 import Favorite from './component/Favoris/Favorite';
-
 import Card from './component/card/Card';
 import Header from './component/header/Header';
+
 
 function App() {
 
@@ -27,20 +27,26 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get('https://api.jikan.moe/v3/search/anime?q=onepiece').then((response) => {
+    axios.get('https://example-data.draftbit.com/books/').then((response) => {
 
-      setMovies(response.data.results)
+      setMovies(response.data)
       console.log(response)
     }).catch(err => { console.log(err) })
   }, [])
 
-
-
-
-
+  const [favorite,setFavorite] = useState('favHeader')
+  const [home,setHome] = useState('iconNone')
+  const changeMenu = () =>{
+    setFavorite('iconNone')
+    setHome('favHeader')
+  }
+  const changeMenuTwo = () => {
+    setFavorite('favHeader')
+    setHome('iconNone')
+  }
   return (
     <div className="App">
-      <Header getManga={inputChangeHandler} />
+      <Header getManga={inputChangeHandler} FavClick={favorite} HomeClick={home} changeFav={changeMenu} changeHome={changeMenuTwo} />
       <Switch>
         {/* PAGE FAVORIS */}
 

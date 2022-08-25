@@ -4,6 +4,7 @@ import fav from '../../images/fav-pink.png'
 
 
 
+
 function Card(props) {
     function getID(e) {
         props.goFav(e.target.id);
@@ -15,12 +16,12 @@ function Card(props) {
                 <img className='img' src={props.item.image_url} alt="" />
             </div>
             <div className='faceSynopsis'>
-                <span className='synopsis'>{props.item.synopsis}</span>
+                <span className='synopsis'>{props.item.description}</span>
             </div>
                 <div className='cardBottom'>
                     <h3 className='title'>{props.item.title}</h3>
                     <div className='details'>
-                        <span className='score'>{props.item.score}</span>
+                        <span className='score'>{props.item.rating}</span>
                         <div>
                             <img className='fav' src={fav} alt="" id={props.item.title} onClick={getID}/>
                         </div>

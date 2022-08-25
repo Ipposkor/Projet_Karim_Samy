@@ -10,6 +10,9 @@
     transition: all 1s linear;
     position: relative;
 }
+.img{
+    height: 200px;
+}
 .card:hover{
     box-shadow: 0 0 15px rgb(131, 131, 131);
     transform: rotateY(180deg);
@@ -41,7 +44,12 @@
 }
 .fav{
     height: 20px;
-
+    cursor: pointer;
+    position: absolute;
+    margin-left: -10px;
+}
+.fav_like{
+    height: 20px;
     cursor: pointer;
     position: absolute;
     margin-left: -10px;
@@ -59,4 +67,9 @@
 }
 .faceSynopsis{
     display: none;
+    margin-top: 45px;
+    overflow: hidden;
+}
+.synopsis{
+    height: 200px;
 }
