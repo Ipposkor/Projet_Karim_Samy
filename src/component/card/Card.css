@@ -1,4 +1,4 @@
-.card{
+.card {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -10,14 +10,16 @@
     transition: all 1s linear;
     position: relative;
 }
+
 .img{
     height: 200px;
 }
 .card:hover{
+
     box-shadow: 0 0 15px rgb(131, 131, 131);
     transform: rotateY(180deg);
-}
-.cardBottom{
+} */
+.cardBottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,24 +27,29 @@
     padding: 0 15px;
     gap: 5px;
 }
-.details{
+
+.details {
     display: flex;
     flex-direction: column;
     align-self: center;
     gap: 10px;
     margin-top: -15px;
 }
-.btnFav{
+
+.btnFav {
     border: none;
 }
-.title{
+
+.title {
     overflow: hidden;
 
 }
-.score{
-    color: rgba(245,181,10,255);
+
+.score {
+    color: rgba(245, 181, 10, 255);
 }
-.fav{
+
+.fav {
     height: 20px;
     cursor: pointer;
     position: absolute;
@@ -54,22 +61,28 @@
     position: absolute;
     margin-left: -10px;
 }
-.card:hover .faceCover{
+
+.card:hover .faceCover {
     display: none;
 }
-.card:hover .cardBottom{
+
+.card:hover .cardBottom {
     transform: rotateY(180deg);
 }
-.card:hover .faceSynopsis{
+
+.card:hover .faceSynopsis {
     display: flex;
     transform: rotateY(180deg);
     padding: 0 10px;
 }
-.faceSynopsis{
+
+.faceSynopsis {
     display: none;
+
     margin-top: 45px;
     overflow: hidden;
 }
 .synopsis{
     height: 200px;
+
 }
