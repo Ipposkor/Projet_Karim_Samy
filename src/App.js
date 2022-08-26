@@ -74,11 +74,12 @@ function App() {
         {/* PAGE FAVORIS */}
 
         <Route path={"/Favoris"}>
+          <div className='books-shelf' >
+
+
+          </div>
           <div className='tqtt'>
-            <div className='books-shelf' >
 
-
-            </div>
             {movies.map((item, index) => {
               return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
             })}

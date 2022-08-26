@@ -3,6 +3,8 @@ import booknot from '../../images/open-book.png'
 import './Favorite.css'
 import Content from './Content'
 import CheckBox from './CheckBox'
+import close from '../../images/close.png'
+import cancel from '../../images/clear.png'
 
 const Favorite = (props) => {
 
@@ -31,10 +33,11 @@ const Favorite = (props) => {
                 {/* <Search /> */}
                 <div className='inner-book'  >
                     <div className='greenBook'>
-
-
                         <CheckBox />
-                        <span id={props.item.title} onClick={getDel}>x</span>
+                        <span className='close' id={props.item.title} onClick={getDel}>
+
+                            <img src={cancel} alt="" />
+                        </span>
                     </div>
 
                     <img className='img-img' onClick={toggleCheck} src={props.item.image_url} alt="" />

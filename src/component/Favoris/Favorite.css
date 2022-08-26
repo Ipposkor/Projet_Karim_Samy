@@ -5,6 +5,15 @@
     height: 20vh;
 }
 
+.testx {
+    height: 20vh;
+    width: 100%;
+}
+
+.close {
+    cursor: pointer;
+}
+
 .dnone {
     display: none;
 }
@@ -49,6 +58,7 @@
 
 .img-img {
     height: 400px;
+    /* width: 100%; */
     cursor: pointer;
     /* opacity: 0.5; */
 
