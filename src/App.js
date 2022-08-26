@@ -8,6 +8,8 @@ import Card from './component/card/Card';
 import Header from './component/header/Header';
 import Banner from './component/banner/Banner';
 import bookShelf from './images/bookshelf.jpg'
+import fav from './images/fav.png'
+import favLike from './images/fav-like.png'
 
 
 
@@ -94,11 +96,10 @@ function App() {
             {GetR}
           </div>
           <div className='main'>
-
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
                 return (
-                  <Card id={index} key={index} item={item} goFav={() => { animeFav(item.title) }} />
+                  <Card id={index} key={index} item={item} stock={anime} goFav={() => { animeFav(item.title) }} />
                 );
               }
             })}
@@ -110,3 +111,6 @@ function App() {
 }
 
 export default App;
+
+
+// Opacity sur book hover !!!!!!!!
