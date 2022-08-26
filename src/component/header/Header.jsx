@@ -1,6 +1,6 @@
 import './Header.css'
-import fav from '../../images/favoris.png'
-import home from '../../images/home.png'
+import fav from '../../images/favoris-dark.png'
+import home from '../../images/home-dark.png'
 import { Link } from 'react-router-dom';
 
 function Header(props) {
@@ -25,7 +25,7 @@ function Header(props) {
                 <img className= {props.HomeClick} src={home} alt="" onClick={HomeClick} />
             </Link>
 
-            <input className='search' type="text" placeholder='Search' onChange={getAnime} />
+            <input className='search' type="text" placeholder='What are you reading for ?' onChange={getAnime} />
         </div>
     );
 }

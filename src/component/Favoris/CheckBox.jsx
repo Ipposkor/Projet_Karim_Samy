@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CheckBox.css'
-import selected from '../../images/book.png'
+import selected from '../../images/bookgreen.png'
 import deselected from '../../images/book2.png'
 
 const CheckBox = () => {
