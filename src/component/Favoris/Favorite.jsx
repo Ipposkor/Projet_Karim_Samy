@@ -1,52 +1,33 @@
-import React, { useEffect } from 'react'
-import book from '../../images/open-book.png'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import booknot from '../../images/open-book.png'
 import './Favorite.css'
-import bookread from '../../images/read.png'
-
-import { Link } from 'react-router-dom'
+import Content from './Content'
+import CheckBox from './CheckBox'
 
 
 const Favorite = (props) => {
-    const getID = (e) => {
-        console.log(e.target.id);
+
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    const toggleCheck = () => {
+        setIsChecked(!isChecked);
+        // handleClick()
     }
 
-    const getDel = (e) => {
-
-        let delfav = props.stock.indexOf(props.item.title)
-        props.stock.splice(delfav, 1)
-        console.log(delfav)
-    }
-
-    const reading = (event) => {
-        // props.doneReading(event.target.id)
-    }
+    const checkbox = isChecked ? '' : <Content stock={props.stock} item={props.item} />;
 
     return (
-        <div className={props.stock.includes(props.item.title) ? props.read + ' inner-movie' : 'dnone'}   >
+        <div className={props.stock.includes(props.item.title) ? ' inner-movie' : 'dnone'}   >
             {/* <Search /> */}
             <div className='inner-book'  >
-                <img className='img-img' src={props.item.image_url} alt="" />
+                <img className='img-img' onClick={toggleCheck} src={props.item.image_url} alt="" />
             </div>
-            <div className='infos'>
-                <div className='cancel'>
-                    <div className='title-view'>
+            <div className='inner-content'>
 
-                        <h1 id={props.item.title} onClick={getID}>{props.item.title} </h1>
-                        <img key={props.item.id} id={props.item.title} onClick={reading} className='book' src={props.bkrd.includes(props.item.title) ? bookread : book} alt="" />
-                    </div>
-                    <span id={props.item.title} onClick={getDel}>x</span>
-                </div>
-                <span>Pages: {props.item.num_pages}</span>
-                <br />
-                <span>Score: {props.item.rating}</span>
-                <br />
-
-                <span>Genre: {props.item.genres}</span>
-
-                <p>{props.item.description}</p>
+                {checkbox}
             </div>
+
         </div>)
 }
 

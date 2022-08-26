@@ -6,7 +6,7 @@ import './App.css';
 import Favorite from './component/Favoris/Favorite';
 import Card from './component/card/Card';
 import Header from './component/header/Header';
-import book from './images/open-book.png'
+import booknot from './images/open-book.png'
 import bookread from './images/read.png'
 
 
@@ -18,23 +18,26 @@ function App() {
   const [favorite, setFavorite] = useState('favHeader')
   const [home, setHome] = useState('iconNone')
   const [filteredInput, setFilteredInput] = useState('');
-  const [book, setBook] = useState([]);
 
 
+
+
+  // console.log(curbook)
   const animeFav = (book) => {
+
     setAnime((prevBook) => {
       return ([book, ...prevBook]);
     })
 
   }
 
-  const onReadBook = (e) => {
-    setBook((prevBook) => {
-      return ([e, ...prevBook])
-    })
-    console.log(book)
-  }
+  // console.log(book)
+  // const onReadBook = (e) => {
 
+  //   setCurBook((prevE) => {
+  //     return ([e, ...prevE])
+  //   })
+  // }
 
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
@@ -48,12 +51,9 @@ function App() {
   }, [anime])
 
   useEffect(() => {
+
     animeFav()
   }, [movies])
-
-
-
-
   const changeMenu = () => {
     setFavorite('iconNone')
     setHome('favHeader')
@@ -70,9 +70,11 @@ function App() {
         {/* PAGE FAVORIS */}
 
         <Route path={"/Favoris"}>
-          {movies.map((item, index) => {
-            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite bkrd={book} key={index} reading={onReadBook} stock={anime} id={item.id} item={item} /> : null
-          })}
+          <div className='tqtt'>
+            {movies.map((item, index) => {
+              return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
+            })}
+          </div>
         </Route>
 
         {/* PAGE PRINCPALE */}
