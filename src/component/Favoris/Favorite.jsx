@@ -8,7 +8,7 @@ import CheckBox from './CheckBox'
 const Favorite = (props) => {
 
 
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(true);
 
     const toggleCheck = () => {
         setIsChecked(!isChecked);
