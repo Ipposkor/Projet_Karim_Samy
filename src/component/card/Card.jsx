@@ -18,10 +18,6 @@ function Card(props) {
     }
     const [isSeen, setIsSeen] = useState(false);
 
-    const toggleCheckSeen = () => {
-
-    }
-
     const checkboxed = isSeen ? fav_Like : fav;
     return (
         <div className='cardBox'>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
@@ -10,11 +9,13 @@ import Banner from './component/banner/Banner';
 import bookShelf from './images/bookshelf.jpg'
 import fav from './images/fav.png'
 import favLike from './images/fav-like.png'
+import Empty from './component/Favoris/Empty';
+import Content from './component/Favoris/Content';
+
 
 
 
 function App() {
-
 
   const [movies, setMovies] = useState([])
   const [anime, setAnime] = useState([])
@@ -22,16 +23,10 @@ function App() {
   const [home, setHome] = useState('iconNone')
   const [filteredInput, setFilteredInput] = useState('');
 
-
-
-
-  // console.log(curbook)
   const animeFav = (book) => {
-
     setAnime((prevBook) => {
       return ([book, ...prevBook]);
     })
-
   }
 
   const inputChangeHandler = (selectedAnime) => {
@@ -46,9 +41,9 @@ function App() {
   }, [anime])
 
   useEffect(() => {
-
     animeFav()
   }, [movies])
+
   const changeMenu = () => {
     setFavorite('iconNone')
     setHome('favHeader')
@@ -68,6 +63,7 @@ function App() {
       <img src={bookrandom.image_url} alt="" />
     );
   }
+  console.log(anime);
 
   return (
     <div className="App">
@@ -82,8 +78,14 @@ function App() {
           </div>
           <div className='tqtt'>
 
+
             {movies.map((item, index) => {
-              return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
+              if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
+                return <Favorite stock={anime} id={index} item={item} />
+
+
+              }
+              // return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
             })}
           </div>
         </Route>
@@ -112,5 +114,3 @@ function App() {
 
 export default App;
 
-
-// Opacity sur book hover !!!!!!!!

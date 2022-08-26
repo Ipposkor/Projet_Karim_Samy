@@ -6,9 +6,10 @@
     padding: 20px 10px 10px 10px;
     gap: 20px;
     transition: 1s;
+    background-color: white;
 }
 .card:hover{
-    box-shadow: 0 0 10px rgb(204, 205, 204);
+    box-shadow: 0 0 4px 1px rgb(204, 205, 204);
     transition: 1s;
 }
 .faceCover{
