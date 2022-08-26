@@ -63,7 +63,6 @@ function App() {
       <img src={bookrandom.image_url} alt="" />
     );
   }
-  console.log(anime);
 
   return (
     <div className="App">
