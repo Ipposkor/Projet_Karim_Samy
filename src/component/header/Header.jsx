@@ -1,5 +1,5 @@
 import './Header.css'
-import fav from '../../images/book.png'
+import fav from '../../images/favoris-dark.png'
 import home from '../../images/home-dark.png'
 import { Link } from 'react-router-dom';
 
