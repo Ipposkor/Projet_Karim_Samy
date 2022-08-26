@@ -8,11 +8,12 @@ import Card from './component/card/Card';
 import Header from './component/header/Header';
 import Banner from './component/banner/Banner';
 import bookShelf from './images/bookshelf.jpg'
+import Empty from './component/Favoris/Empty';
+import Content from './component/Favoris/Content';
 
 
 
 function App() {
-
 
   const [movies, setMovies] = useState([])
   const [anime, setAnime] = useState([])
@@ -20,16 +21,10 @@ function App() {
   const [home, setHome] = useState('iconNone')
   const [filteredInput, setFilteredInput] = useState('');
 
-
-
-
-  // console.log(curbook)
   const animeFav = (book) => {
-
     setAnime((prevBook) => {
       return ([book, ...prevBook]);
     })
-
   }
 
   const inputChangeHandler = (selectedAnime) => {
@@ -41,12 +36,12 @@ function App() {
       setMovies(response.data)
       // console.log(response)
     }).catch(err => { console.log(err) })
-  }, [anime])
+  }, [])
 
   useEffect(() => {
-
     animeFav()
-  }, [movies])
+  }, [])
+
   const changeMenu = () => {
     setFavorite('iconNone')
     setHome('favHeader')
@@ -66,6 +61,7 @@ function App() {
       <img src={bookrandom.image_url} alt="" />
     );
   }
+  console.log(anime);
 
   return (
     <div className="App">
@@ -80,8 +76,14 @@ function App() {
           </div>
           <div className='tqtt'>
 
+
             {movies.map((item, index) => {
-              return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
+              if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
+                return <Favorite stock={anime} id={index} item={item} />
+
+
+              }
+              // return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
             })}
           </div>
         </Route>
