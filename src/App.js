@@ -36,11 +36,11 @@ function App() {
       setMovies(response.data)
       // console.log(response)
     }).catch(err => { console.log(err) })
-  }, [])
+  }, [anime])
 
   useEffect(() => {
     animeFav()
-  }, [])
+  }, [movies])
 
   const changeMenu = () => {
     setFavorite('iconNone')
@@ -61,7 +61,6 @@ function App() {
       <img src={bookrandom.image_url} alt="" />
     );
   }
-  console.log(anime);
 
   return (
     <div className="App">
