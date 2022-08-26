@@ -6,8 +6,9 @@ import './App.css';
 import Favorite from './component/Favoris/Favorite';
 import Card from './component/card/Card';
 import Header from './component/header/Header';
-import booknot from './images/open-book.png'
-import bookread from './images/read.png'
+import Banner from './component/banner/Banner';
+import bookShelf from './images/bookshelf.jpg'
+
 
 
 function App() {
@@ -30,14 +31,6 @@ function App() {
     })
 
   }
-
-  // console.log(book)
-  // const onReadBook = (e) => {
-
-  //   setCurBook((prevE) => {
-  //     return ([e, ...prevE])
-  //   })
-  // }
 
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
@@ -62,6 +55,17 @@ function App() {
     setFavorite('favHeader')
     setHome('iconNone')
   }
+  let randombook = movies[Math.floor(Math.random() * movies.length)]
+  function GetR(props) {
+    let corp = document.querySelector('.main')
+    let bookrandom = document.querySelector('.randomBook')
+    corp.classList.toggle('active')
+    bookrandom.classList.toggle('active')
+    console.log(bookrandom.image_url);
+    return (
+      <img src={bookrandom.image_url} alt="" />
+    );
+  }
 
   return (
     <div className="App">
@@ -71,6 +75,10 @@ function App() {
 
         <Route path={"/Favoris"}>
           <div className='tqtt'>
+            <div className='books-shelf' >
+
+
+            </div>
             {movies.map((item, index) => {
               return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
             })}
@@ -80,7 +88,12 @@ function App() {
         {/* PAGE PRINCPALE */}
 
         <Route path={"/"}>
+          <Banner randomBook={GetR} />
+          <div className='randomBook active'>
+            {GetR}
+          </div>
           <div className='main'>
+
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
                 return (

@@ -9,6 +9,12 @@
     display: none;
 }
 
+.bookshelf {
+    background-image: url('../../images/bookshelf.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
 .inner-movie {
     display: flex;
     order: -1;
@@ -32,7 +38,7 @@
     /* display: flex;
     justify-content: center; */
     margin: 10px;
-    width: 60%;
+    width: 70%;
 }
 
 .inner-movie img {

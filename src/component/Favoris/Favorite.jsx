@@ -4,7 +4,6 @@ import './Favorite.css'
 import Content from './Content'
 import CheckBox from './CheckBox'
 
-
 const Favorite = (props) => {
 
 
@@ -25,23 +24,28 @@ const Favorite = (props) => {
     const checkbox = isChecked ? '' : <Content stock={props.stock} item={props.item} />;
 
     return (
-        <div className={props.stock.includes(props.item.title) ? ' inner-movie' : 'dnone'}   >
-            {/* <Search /> */}
-            <div className='inner-book'  >
-                <div className='greenBook'>
+        <div>
 
 
-                    <CheckBox />
-                    <span id={props.item.title} onClick={getDel}>x</span>
+            <div className={props.stock.includes(props.item.title) ? ' inner-movie' : 'dnone'}   >
+                {/* <Search /> */}
+                <div className='inner-book'  >
+                    <div className='greenBook'>
+
+
+                        <CheckBox />
+                        <span id={props.item.title} onClick={getDel}>x</span>
+                    </div>
+
+                    <img className='img-img' onClick={toggleCheck} src={props.item.image_url} alt="" />
+                </div>
+                <div className='inner-content'>
+                    {checkbox}
                 </div>
 
-                <img className='img-img' onClick={toggleCheck} src={props.item.image_url} alt="" />
             </div>
-            <div className='inner-content'>
-                {checkbox}
-            </div>
-
-        </div>)
+        </div>
+    )
 }
 
 export default Favorite
