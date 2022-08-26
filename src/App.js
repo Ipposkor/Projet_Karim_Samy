@@ -82,7 +82,7 @@ function App() {
         <Route path={"/"}>
           <div className='main'>
             {movies.map((item, index) => {
-              if (item.title.toLowerCase().includes(filteredInput)) {
+              if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
                 return (
                   <Card id={index} key={index} item={item} goFav={() => { animeFav(item.title) }} />
                 );

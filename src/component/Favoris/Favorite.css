@@ -11,21 +11,28 @@
 
 .inner-movie {
     display: flex;
+    order: -1;
     /* flex-wrap: wrap; */
     /* flex-direction: column; */
     /* text-align: start; */
     /* margin: auto; */
     color: black;
     margin-top: 40px;
-    margin: 20px;
+    /* margin: 20px; */
     /* width: 70%; */
     /* justify-content: center; */
+    align-items: center;
     text-align: justify;
+
 
 }
 
 .inner-content {
+    /* text-align: center; */
+    /* display: flex;
+    justify-content: center; */
     margin: 10px;
+    width: 60%;
 }
 
 .inner-movie img {
@@ -44,9 +51,7 @@
 
 
 
-.infos {
-    /* margin-left: 20px; */
-}
+
 
 .cancel {
     display: flex;
@@ -64,7 +69,13 @@
 
 .inner-book {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    /* margin: 10px; */
+}
+
+.greenBook {
+    margin: 10px;
+    text-align: end;
 }
 
 .book {

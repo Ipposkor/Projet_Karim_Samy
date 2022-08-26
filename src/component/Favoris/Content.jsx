@@ -1,4 +1,5 @@
 import React from 'react'
+import './Content.css'
 import CheckBox from './CheckBox';
 
 const Content = (props) => {
@@ -9,13 +10,6 @@ const Content = (props) => {
 
 
 
-    const getDel = (e) => {
-
-        let delfav = props.stock.indexOf(props.item.title)
-        props.stock.splice(delfav, 1)
-        console.log(delfav)
-    }
-
 
 
 
@@ -25,9 +19,7 @@ const Content = (props) => {
                 <div className='title-view'>
 
                     <h1 id={props.item.title} onClick={getID}>{props.item.title} </h1>
-                    <CheckBox />
                 </div>
-                <span id={props.item.title} onClick={getDel}>x</span>
             </div>
             <span>Pages: {props.item.num_pages}</span>
             <br />
