@@ -20,7 +20,9 @@ function Header(props) {
         <div className='header'>
             <div className='whiteSpace'></div>
             <Link to={"/Favoris"}>
-                <img className= {props.FavClick} src={fav} alt="" onClick={FavClick}/>
+                <div className='imgLittle'>
+                    <img className= {props.FavClick} src={fav} alt="" onClick={FavClick}/>
+                </div>
             </Link>
             <Link to={"/"}>
                 <img className= {props.HomeClick} src={home} alt="" onClick={HomeClick} />
