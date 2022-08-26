@@ -1,4 +1,3 @@
-
 .testt {
     display: block;
     justify-content: center;
@@ -12,14 +11,21 @@
 
 .inner-movie {
     display: flex;
-    text-align: start;
-    margin: auto;
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
+    /* text-align: start; */
+    /* margin: auto; */
     color: black;
     margin-top: 40px;
-    width: 70%;
-    justify-content: center;
+    margin: 10px;
+    /* width: 70%; */
+    /* justify-content: center; */
     text-align: justify;
 
+}
+
+.inner-content {
+    margin: 10px;
 }
 
 .inner-movie img {
@@ -30,12 +36,16 @@
 
 .img-img {
     height: 400px;
+    cursor: pointer;
+    /* opacity: 0.5; */
 
     /* height: 20px; */
 }
 
+
+
 .infos {
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 
 .cancel {
@@ -66,9 +76,17 @@
 
 .title-view {
     display: flex;
+    /* margin: auto; */
+    width: 100%;
     align-items: center;
 }
 
 .read {
     background-color: green;
+}
+
+.check {
+    position: absolute;
+    cursor: pointer;
+    /* opacity: 0.5; */
 }

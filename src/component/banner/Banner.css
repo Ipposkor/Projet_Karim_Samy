@@ -1,0 +1,25 @@
+.banner{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+}
+.bannerImg{
+    height: 200px;
+    margin-top: 50px;
+}
+.bannerImg1{
+    margin-top: 50px;
+    transform: rotateY(180deg);
+    height: 200px;
+}
+.bannerBook{
+    height: 200px;
+    opacity: 0.78;
+    transition: 800ms;
+    cursor: pointer;
+}
+.bannerBook:hover{
+    transform: scale(1.15);
+    transition: 800ms;
+    margin: 0 20px;
+}

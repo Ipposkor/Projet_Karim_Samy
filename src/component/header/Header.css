@@ -8,6 +8,8 @@
     transition: 800ms;
     margin: auto;
     overflow: hidden;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 2px -2px rgb(164, 164, 164);
 }
 .favHeader{
     height: 50px;
@@ -15,8 +17,6 @@
     align-self: center;
     background-color: white;
     border-left: 2px solid white;
-    margin-right: 50px;
-    padding-left: 50px;
 }
 .homeHeader{
     height: 50px;
@@ -24,8 +24,16 @@
     align-self: center;
     background-color: white;
     border-left: 2px solid white;
-    margin-right: 50px;
-    padding-left: 50px;
+}
+.whiteSpace{
+    width: 50px;
+    background-color: white;
+    z-index: 2;
+}
+.whiteSpace2{
+    width: 100px;
+    background-color: white;
+    z-index: 2;
 }
 .iconNone{
     display: none;
@@ -38,7 +46,7 @@
     border: none;
     padding: 0 10px;
 }
-.header:hover{
+/* .header:hover{
     box-shadow: 0 0 5px rgb(176, 176, 174);
     transition: 800ms;
-}
+} */

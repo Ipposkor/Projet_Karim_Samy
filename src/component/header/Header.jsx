@@ -18,13 +18,14 @@ function Header(props) {
         }
     return (
         <div className='header'>
+            <div className='whiteSpace'></div>
             <Link to={"/Favoris"}>
                 <img className= {props.FavClick} src={fav} alt="" onClick={FavClick}/>
             </Link>
             <Link to={"/"}>
                 <img className= {props.HomeClick} src={home} alt="" onClick={HomeClick} />
             </Link>
-
+            <div className='whiteSpace2'></div>
             <input className='search' type="text" placeholder='What are you reading for ?' onChange={getAnime} />
         </div>
     );

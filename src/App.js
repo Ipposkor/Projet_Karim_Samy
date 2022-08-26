@@ -6,8 +6,10 @@ import './App.css';
 import Favorite from './component/Favoris/Favorite';
 import Card from './component/card/Card';
 import Header from './component/header/Header';
-import book from './images/open-book.png'
+import booknot from './images/open-book.png'
 import bookread from './images/read.png'
+import Banner from './component/banner/Banner';
+import BookR from './component/randomBook/RandomBook';
 
 
 function App() {
@@ -18,23 +20,26 @@ function App() {
   const [favorite, setFavorite] = useState('favHeader')
   const [home, setHome] = useState('iconNone')
   const [filteredInput, setFilteredInput] = useState('');
-  const [book, setBook] = useState([]);
 
 
+
+
+  // console.log(curbook)
   const animeFav = (book) => {
+
     setAnime((prevBook) => {
       return ([book, ...prevBook]);
     })
 
   }
 
-  const onReadBook = (e) => {
-    setBook((prevBook) => {
-      return ([e, ...prevBook])
-    })
-    console.log(book)
-  }
+  // console.log(book)
+  // const onReadBook = (e) => {
 
+  //   setCurBook((prevE) => {
+  //     return ([e, ...prevE])
+  //   })
+  // }
 
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
@@ -48,12 +53,9 @@ function App() {
   }, [anime])
 
   useEffect(() => {
+
     animeFav()
   }, [movies])
-
-
-
-
   const changeMenu = () => {
     setFavorite('iconNone')
     setHome('favHeader')
@@ -61,6 +63,17 @@ function App() {
   const changeMenuTwo = () => {
     setFavorite('favHeader')
     setHome('iconNone')
+  }
+  let randombook = movies[Math.floor(Math.random()*movies.length)]
+  function GetR(props){
+    let corp = document.querySelector('.main')
+    let bookrandom = document.querySelector('.randomBook')
+    corp.classList.toggle('active')
+    bookrandom.classList.toggle('active')
+    console.log(bookrandom.image_url);
+    return(
+      <img src={bookrandom.image_url} alt="" />
+    );
   }
 
   return (
@@ -70,14 +83,20 @@ function App() {
         {/* PAGE FAVORIS */}
 
         <Route path={"/Favoris"}>
-          {movies.map((item, index) => {
-            return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite bkrd={book} key={index} reading={onReadBook} stock={anime} id={item.id} item={item} /> : null
-          })}
+          <div className='tqtt'>
+            {movies.map((item, index) => {
+              return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
+            })}
+          </div>
         </Route>
 
         {/* PAGE PRINCPALE */}
 
         <Route path={"/"}>
+          <Banner randomBook={GetR}/>
+          <div className='randomBook active'>
+            {GetR}
+          </div>
           <div className='main'>
             {movies.map((item, index) => {
               if (item.title.toLowerCase().includes(filteredInput)) {

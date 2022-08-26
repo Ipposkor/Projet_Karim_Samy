@@ -5,6 +5,21 @@
   justify-content: center;
 }
 
+.main.active{
+  display: none;
+}
+
+.tqtt {
+  display: flex;
+  /* position: absolute; */
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* grid-template-columns: 250px 250px 250px 250px; */
+  width: 90%;
+  margin: auto;
+}
+
 .App {
   text-align: center;
   background-color: white;
@@ -14,6 +29,13 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.randomBook.active{
+  display: none;
+}
+.randomBook{
+  display: block;
 }
 
 @media (prefers-reduced-motion: no-preference) {
