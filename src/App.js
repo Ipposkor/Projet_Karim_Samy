@@ -11,6 +11,7 @@ import fav from './images/fav.png'
 import favLike from './images/fav-like.png'
 import Empty from './component/Favoris/Empty';
 import Content from './component/Favoris/Content';
+import { commentSmile, folderTimes } from 'fontawesome';
 
 
 
@@ -18,38 +19,75 @@ import Content from './component/Favoris/Content';
 function App() {
 
   const [movies, setMovies] = useState([])
-  const [anime, setAnime] = useState([])
-  const [favorite, setFavorite] = useState('favHeader')
+  const [myFavorite, setMyFavorite] = useState([])
+  const [favorite, setFavoritess] = useState('favHeader')
   const [home, setHome] = useState('iconNone')
-  const [filteredInput, setFilteredInput] = useState('');
+  const [filteredInput, setFilteredInput] = useState("");
 
-  const animeFav = (book) => {
-    setAnime((prevBook) => {
-      return ([book, ...prevBook]);
-    })
+
+  console.log(filteredInput)
+
+  // add to favourite
+  const addFavouriteMovie = (movie) => {
+    if (!myFavorite.includes(movie)) {
+      const newFavouriteList = [...myFavorite, movie];
+      setMyFavorite(newFavouriteList);
+    }
+    // saveToLocalStorage(newFavouriteList);
+  };
+
+  // remove from favorite
+  const removeFavouriteMovie = (movie) => {
+    const newFavouriteList = myFavorite.filter(
+      (favorite) => favorite.id !== movie.id
+
+    );
+    setMyFavorite(newFavouriteList)
   }
+
+  //   setMyFavorite(newFavouriteList);
+  //   // saveToLocalStorage(newFavouriteList);
+  // };
+
+
+  // const saveToLocalStorage = (item) => {
+  //   localStorage.setItem('react-books-app', JSON.stringify(item))
+  // }
+  // const animeFav = (book) => {
+  //   // saveToLocalStorage(book)
+  //   setAnime((prevBook) => {
+  //     const onRead = [book, ...prevBook]
+  //     saveToLocalStorage(onRead)
+  //     return (onRead);
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   const bookFavorite = JSON.parse(localStorage.getItem('react-books-app'))
+  //   if (bookFavorite !== null) setAnime(bookFavorite)
+  // }, [])
+
 
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);
   };
 
   useEffect(() => {
-    axios.get('https://example-data.draftbit.com/books/').then((response) => {
+    axios.get('https://example-data.draftbit.com/books?_page=4&_limit=20').then((response) => {
       setMovies(response.data)
+      // const ele = response
       // console.log(response)
     }).catch(err => { console.log(err) })
-  }, [anime])
+  }, [])
+  console.log(movies);
 
-  useEffect(() => {
-    animeFav()
-  }, [movies])
 
   const changeMenu = () => {
-    setFavorite('iconNone')
+    setFavoritess('iconNone')
     setHome('favHeader')
   }
   const changeMenuTwo = () => {
-    setFavorite('favHeader')
+    setFavoritess('favHeader')
     setHome('iconNone')
   }
   let randombook = movies[Math.floor(Math.random() * movies.length)]
@@ -72,20 +110,9 @@ function App() {
 
         <Route path={"/Favoris"}>
           <div className='books-shelf' >
-
-
           </div>
           <div className='tqtt'>
-
-
-            {movies.map((item, index) => {
-              if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
-                return <Favorite stock={anime} id={index} item={item} />
-
-
-              }
-              // return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
-            })}
+            {myFavorite.length > 0 ? <Favorite name={movies.title} input={filteredInput} getDel={removeFavouriteMovie} item={myFavorite} /> : <Empty />}
           </div>
         </Route>
 
@@ -97,13 +124,18 @@ function App() {
             {GetR}
           </div>
           <div className='main'>
-            {movies.map((item, index) => {
-              if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
-                return (
-                  <Card id={index} key={index} item={item} stock={anime} goFav={() => { animeFav(item.title) }} />
-                );
+            {movies.filter((val) => {
+
+              if (filteredInput == "") {
+                return (val)
+
+              } else if (val.title.toLowerCase().includes(filteredInput.toLowerCase()) && val) {
+                return val
               }
-            })}
+            }).map((item, index) => {
+              return <Card id={index} key={index} item={item} goFav={() => addFavouriteMovie(item)} />
+            }
+            )}
           </div>
         </Route>
       </Switch>

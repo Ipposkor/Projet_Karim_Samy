@@ -26,7 +26,8 @@
 
 .inner-movie {
     display: flex;
-    order: -1;
+    /* height: 400px; */
+    /* order: -1; */
     /* flex-wrap: wrap; */
     /* flex-direction: column; */
     /* text-align: start; */
@@ -52,14 +53,22 @@
 
 .inner-movie img {
     /* width: 100%; */
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
+
+}
+
+.tqtfav {
+    display: flex;
+    flex-wrap: wrap;
 
 }
 
 .img-img {
     height: 400px;
+    width: 200px;
+    margin-bottom: 40px;
     /* width: 100%; */
-    filter: drop-shadow(15px 10px 4px #00000049);
+    filter: drop-shadow(15px 10px 4px #0000003b);
     cursor: pointer;
     /* opacity: 0.5; */
 
