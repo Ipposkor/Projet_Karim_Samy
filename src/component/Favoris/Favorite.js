@@ -8,88 +8,110 @@ import axios from 'axios';
 import cancel from '../../images/clear.png'
 import Empty from './Empty'
 import { book } from 'fontawesome'
+import Filter from './Filter'
 const Favorite = (props) => {
-
-
-
-    // useEffect(() => {
-    //     axios.get('https://example-data.draftbit.com/books/').then((response) => {
-    //         setBooks(response.data)
-    //         // const ele = response
-    //         // console.log(response)
-    //     }).catch(err => { console.log(err) })
-    // }, [])
-
-
-
-    const [isChecked, setIsChecked] = useState(true);
-    const [isContent, setIsContent] = useState(true);
-    const [isSeen, setIsSeen] = useState(false);
-
+    const [isChecked, setIsChecked] = useState(false);
     const [books, setBooks] = useState([]);
+    const [filtered, setFiltered] = useState('All')
 
     const toggleCheck = (e) => {
         setIsChecked(!isChecked);
         setBooks(e.target.id)
-
-        // if (books === )
-        // console.log(e.target.id)
     }
 
-    console.log(books);
+    const filter = (e) => {
+        console.log(e)
+        setFiltered(e)
+    }
+
+    const favfav = () => {
 
 
 
-    // const toggleCheckSeen = (book) => {
-    //     // let books = book.target.currentSrc
-    //     // let bk = book.target.id
-    //     setIsSeen(!isSeen)
-    //     // const test = [...isRead, books]
+    }
 
-    //     // setIsRead(checkboxed)
-    //     // saveToLocalStorage(isRead)
+    // const onFilteredItem = () => {
+    //     if (filtered == "All") {
+    //         return 'tqtfav'
+    //     } else if 
     // }
 
     return (
+        <div>
+            <div className='filter-filter'>
 
-        <div className='tqtfav'>
-            {props.item.map((item, index) => {
+                {/* <Filter onChangeFilter={filter} /> */}
+            </div>
 
+            <div className='tqtfav'>
+                {props.item.map((item, index) => {
+                    if (item.title.toLowerCase().includes(props.input.toLowerCase())) {
+                        if (props.filtered == 'Read' && item.vu == true) {
+                            return (
+                                <div key={index} className='inner-movie'   >
+                                    {/* <Search /> */}
+                                    <div className='inner-book'  >
+                                        <div className='greenBook'>
+                                            <div>
+                                                <CheckBox data={item} id={item.id} />
 
-
-                if (item.title.toLowerCase().includes(props.input.toLowerCase())) {
-
-                    return (
-                        <div key={index} className='inner-movie'   >
-                            {/* <Search /> */}
-                            <div className='inner-book'  >
-                                <div className='greenBook'>
-                                    <div>
-                                        <CheckBox />
-
+                                            </div>
+                                            <span className='close' id={item.title}>
+                                                <img onClick={() => props.getDel(item)} src={cancel} alt="" />
+                                            </span>
+                                        </div>
+                                        <img id={item.title} className='img-img' onClick={toggleCheck} src={item.image_url} alt="" />
                                     </div>
-                                    <span className='close' id={item.title}>
-                                        <img onClick={() => props.getDel(item)} src={cancel} alt="" />
-                                    </span>
+                                    <div className='inner-content'>
+                                        {books == item.title && isChecked == true ? <Content item={item} /> : null}
+                                    </div>
+                                </div>)
+                        } else if (props.filtered == 'Not read' && item.vu == false) {
+                            return (<div key={index} className='inner-movie'   >
+                                <div className='inner-book'  >
+                                    <div className='greenBook'>
+                                        <div>
+                                            <CheckBox data={item} id={item.id} />
+
+                                        </div>
+                                        <span className='close' id={item.title}>
+                                            <img onClick={() => props.getDel(item)} src={cancel} alt="" />
+                                        </span>
+                                    </div>
+                                    <img id={item.title} className='img-img' onClick={toggleCheck} src={item.image_url} alt="" />
                                 </div>
-                                <img id={item.title} className='img-img' onClick={toggleCheck} src={item.image_url} alt="" />
-                            </div>
-                            <div className='inner-content'>
-                                {books == item.title && isChecked == true ? <Content item={item} /> : null}
-                            </div>
+                                <div className='inner-content'>
+                                    {books == item.title && isChecked == true ? <Content item={item} /> : null}
+                                </div>
+                            </div>)
+                        } else if (props.filtered == 'All') {
+                            return (
+                                <div key={index} className='inner-movie'   >
+                                    <div className='inner-book'  >
+                                        <div className='greenBook'>
+                                            <div>
+                                                <CheckBox data={item} id={item.id} />
 
+                                            </div>
+                                            <span className='close' id={item.title}>
+                                                <img onClick={() => props.getDel(item)} src={cancel} alt="" />
+                                            </span>
+                                        </div>
+                                        <img id={item.title} className='img-img' onClick={toggleCheck} src={item.image_url} alt="" />
+                                    </div>
+                                    <div className='inner-content'>
+                                        {books == item.title && isChecked == true ? <Content item={item} /> : null}
+                                    </div>
+                                </div>
 
+                            )
+                        }
 
-                        </div>)
-                }
-
-
-
-
-
-            })}
-
+                    }
+                })}
+            </div>
         </div>
+
     )
 }
 

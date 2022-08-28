@@ -20,8 +20,10 @@
 
 .tqtt {
   display: flex !important;
+  justify-content: center;
   /* position: absolute; */
   flex-wrap: wrap;
+  width: 100%;
   /* flex-direction: row; */
   /* justify-content: center;  */
   /* grid-template-columns: 250px 250px 250px 250px; */
@@ -33,7 +35,10 @@
 
 .App {
   text-align: center;
-  background-color: white;
+  background-color: rgb(231, 231, 231);
+  display: flex;
+  flex-direction: column;
+
 }
 
 .App-logo {
@@ -46,7 +51,40 @@
 }
 
 .randomBook {
-  display: block;
+  display: flex;
+  background-color: rgb(231, 231, 231);
+  flex-direction: column;
+  width: 600px;
+  margin: auto;
+}
+
+.btnR {
+  background-color: rgb(231, 231, 231);
+  border: none;
+  cursor: pointer;
+}
+
+.imgR {
+  height: 400px;
+  width: 280px;
+  margin: auto;
+}
+
+.titleR {
+  font-size: 20px;
+  font-family: 'Bookman';
+  font-style: italic;
+}
+
+.suggest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.textR {
+  font-family: 'Goudy Old Style';
 }
 
 @media (prefers-reduced-motion: no-preference) {

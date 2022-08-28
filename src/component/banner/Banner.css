@@ -1,9 +1,9 @@
 .banner{
     display: flex;
     justify-content: space-evenly;
+    background-color: #ccdcca;
+    padding: 20px;
     margin-bottom: 50px;
-    background-color: #f1eee8;
-
 }
 .bannerImg{
     height: 200px;

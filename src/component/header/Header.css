@@ -1,31 +1,30 @@
 .header {
     display: flex;
     flex-direction: row;
-    height: 50px;
+    height: 60px;
     position: sticky;
-    top: 0;
+    top: 0 ;
     z-index: 5;
     transition: 800ms;
     margin: auto;
-    overflow: hidden;
-    /* margin-bottom: 50px; */
     box-shadow: 0 4px 2px -2px rgb(164, 164, 164);
+    background-color: white;
+    overflow: hidden;
+    width: 100%;
 }
 
 .favHeader {
-    height: 50px;
+    margin-top: 11.5px;
+    height: 35px;
     display: flex;
-    align-self: center;
     background-color: white;
-    border-left: 2px solid white;
 }
 
 .homeHeader {
-    height: 50px;
+    margin-top: 11.5px;
+    height: 35px;
     display: flex;
-    align-self: center;
     background-color: white;
-    border-left: 2px solid white;
 }
 
 .whiteSpace {
@@ -35,9 +34,12 @@
 }
 
 .whiteSpace2 {
-    width: 100px;
+    width: 130px;
     background-color: white;
     z-index: 2;
+    overflow: hidden;
+    align-items: center;
+    display: flex;
 }
 
 .iconNone {
@@ -45,16 +47,16 @@
 }
 
 .search {
-    width: 1500px;
     background-color: white;
     border-left: none;
     color: black;
     border: none;
     padding: 0 10px;
+    font-size: 16.5px;
+    width: 500px;
+    outline: none;
 }
 
-/* .header:hover{
-    box-shadow: 0 0 5px rgb(176, 176, 174);
-    transition: 800ms;
-} */
-
+.logo{
+    height: 140px;
+}
