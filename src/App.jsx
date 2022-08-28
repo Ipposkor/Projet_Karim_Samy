@@ -128,6 +128,8 @@ function App() {
           <div className='books-shelf' >
           </div>
           <Filter onChangeFilter={filter} />
+          <div className='myFav'>My Favourites</div>
+
           <div className='tqtt'>
 
             {myFavorite.length > 0 ? <Favorite name={movies.title} filtered={filtered} input={filteredInput} getDel={removeFavouriteMovie} item={myFavorite} /> : <Empty />}

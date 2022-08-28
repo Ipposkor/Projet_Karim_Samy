@@ -18,6 +18,15 @@
 
 }
 
+.myFav {
+  font-weight: 700;
+  font-size: 33px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: left;
+  margin: 20px 0px 0px 50px;
+}
+
 .tqtt {
   display: flex !important;
   justify-content: center;
