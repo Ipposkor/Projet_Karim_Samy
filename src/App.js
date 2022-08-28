@@ -40,14 +40,10 @@ function App() {
       const newFavouriteList = [...myFavorite, movie];
       setMyFavorite(newFavouriteList);
       saveToLocalStorage(newFavouriteList);
-      console.log(myFavorite)
-      console.log(newFavouriteList)
+
     }
   };
 
-  // movies.map((item, index) => {
-  //   // item.vue
-  // })
 
   // remove from favorite
   const removeFavouriteMovie = (movie) => {
@@ -80,11 +76,10 @@ function App() {
   useEffect(() => {
     axios.get('https://example-data.draftbit.com/books?_page=4&_limit=50').then((response) => {
       setMovies(response.data)
-      // const ele = response
-      // console.log(response)
+
     }).catch(err => { console.log(err) })
   }, [])
-  console.log(moviesVu);
+
 
 
   const changeMenu = () => {
@@ -101,7 +96,7 @@ function App() {
     corp.classList.toggle('active')
     bookrandom.classList.toggle('active')
   }
-  // const randombook = movies[Math.floor(Math.random() * movies.length)]
+
   const [book, setBook] = useState('')
   const getBook = () => {
     fetch('https://example-data.draftbit.com/books/')
@@ -117,7 +112,7 @@ function App() {
 
 
   const filter = (e) => {
-    console.log(e)
+
     setFiltered(e)
   }
 
@@ -151,23 +146,15 @@ function App() {
           </div>
           <div className='main'>
             {
-              movies.filter((val) => {
-
-                if (filteredInput == "") {
-                  return (val)
-
-                } else if (val.title.toLowerCase().includes(filteredInput.toLowerCase()) && val) {
-                  return val
-                }
-              }).map((item, index) => {
+              movies.map((item, index) => {
                 if (moviesVu.length < movies.length) {
                   moviesVu[index] = item
                   moviesVu[index].vu = false
                   moviesVu[index].fav = false
-                  console.log(moviesVu)
+
 
                 }
-                return <Card fav={myFavorite} id={index} key={index} item={moviesVu[index]} goFav={() => addFavouriteMovie(moviesVu[index])} />
+                return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Card fav={myFavorite} id={index} key={index} item={moviesVu[index]} goFav={() => addFavouriteMovie(moviesVu[index])} /> : null
               }
               )
             }

@@ -5,8 +5,7 @@ import CheckBox from './CheckBox';
 const Content = (props) => {
 
     const getID = (e) => {
-        console.log(e.target.id);
-        // props.changeId(e.target.id)
+
     }
     return (
         <div className={'infos'}>

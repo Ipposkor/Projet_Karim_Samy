@@ -12,37 +12,17 @@ import Filter from './Filter'
 const Favorite = (props) => {
     const [isChecked, setIsChecked] = useState(false);
     const [books, setBooks] = useState([]);
-    const [filtered, setFiltered] = useState('All')
 
     const toggleCheck = (e) => {
         setIsChecked(!isChecked);
         setBooks(e.target.id)
     }
 
-    const filter = (e) => {
-        console.log(e)
-        setFiltered(e)
-    }
-
-    const favfav = () => {
-
-
-
-    }
-
-    // const onFilteredItem = () => {
-    //     if (filtered == "All") {
-    //         return 'tqtfav'
-    //     } else if 
-    // }
 
     return (
         <div>
             <div className='filter-filter'>
-
-                {/* <Filter onChangeFilter={filter} /> */}
             </div>
-
             <div className='tqtfav'>
                 {props.item.map((item, index) => {
                     if (item.title.toLowerCase().includes(props.input.toLowerCase())) {

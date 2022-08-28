@@ -21,14 +21,10 @@
 .tqtt {
   display: flex !important;
   justify-content: center;
-  /* position: absolute; */
+
   flex-wrap: wrap;
   width: 100%;
-  /* flex-direction: row; */
-  /* justify-content: center;  */
-  /* grid-template-columns: 250px 250px 250px 250px; */
-  /* width: 100%; */
-  /* margin: auto; */
+
 }
 
 

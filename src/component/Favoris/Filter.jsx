@@ -8,7 +8,7 @@ const Filter = (props) => {
     const dropdownChangeHandler = (event) => {
         props.onChangeFilter(event.target.value);
         setFilter(event.target.value)
-        console.log(filter)
+
     };
 
 

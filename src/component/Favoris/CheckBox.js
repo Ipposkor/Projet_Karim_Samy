@@ -9,7 +9,7 @@ const CheckBox = (props) => {
     const [isRead, setIsRead] = useState([]);
 
 
-    // useReducer()
+
     const toggleCheckSeen = (book) => {
         setIsSeen(!isSeen)
         props.data.vu = !props.data.vu
