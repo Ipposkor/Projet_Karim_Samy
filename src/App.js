@@ -36,7 +36,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get('https://example-data.draftbit.com/books?_page=4&_limit=20').then((response) => {
+    axios.get('https://example-data.draftbit.com/books/').then((response) => {
       setMovies(response.data)
       // console.log(response)
     }).catch(err => { console.log(err) })
