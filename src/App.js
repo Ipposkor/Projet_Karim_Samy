@@ -11,6 +11,8 @@ import fav from './images/fav.png'
 import favLike from './images/fav-like.png'
 import Empty from './component/Favoris/Empty';
 import Content from './component/Favoris/Content';
+import BookR from './component/randomBook/RandomBook';
+import refresh from './images/refresh.png'
 
 
 
@@ -52,17 +54,30 @@ function App() {
     setFavorite('favHeader')
     setHome('iconNone')
   }
-  let randombook = movies[Math.floor(Math.random() * movies.length)]
   function GetR(props) {
     let corp = document.querySelector('.main')
     let bookrandom = document.querySelector('.randomBook')
     corp.classList.toggle('active')
     bookrandom.classList.toggle('active')
-    console.log(bookrandom.image_url);
-    return (
-      <img src={bookrandom.image_url} alt="" />
-    );
   }
+  // const randombook = movies[Math.floor(Math.random() * movies.length)]
+  const [book,setBook] = useState('')
+  const getBook = () => {
+    fetch('https://example-data.draftbit.com/books/')
+      .then((res) => res.json())
+      .then((data) => {
+        let randombook = Math.floor(Math.random() * data.length);
+        setBook(data[randombook])
+      })
+  }
+  useEffect(() =>{
+    getBook();
+  },[])
+  function Reload(){
+    window.location.reload()
+  }
+
+
 
   return (
     <div className="App">
@@ -79,11 +94,11 @@ function App() {
 
 
             {movies.map((item, index) => {
-              if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
+              // if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
                 return <Favorite stock={anime} id={index} item={item} />
 
 
-              }
+              // }
               // return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Favorite stock={anime} id={index} item={item} /> : null
             })}
           </div>
@@ -92,17 +107,20 @@ function App() {
         {/* PAGE PRINCPALE */}
 
         <Route path={"/"}>
-          <Banner randomBook={GetR} />
+          <Banner randomBook={GetR}  />
           <div className='randomBook active'>
-            {GetR}
+            <button className='btnR' onClick={getBook}><img src={refresh} alt="" /></button>
+            <p className='titleR'>{book.title}</p>
+            <img className='imgR' src={book.image_url} alt="" />
+            <p className='textR'>{book.description}</p>
           </div>
           <div className='main'>
             {movies.map((item, index) => {
-              if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
+              // if (item.title.toLowerCase().includes(filteredInput.toLowerCase())) {
                 return (
                   <Card id={index} key={index} item={item} stock={anime} goFav={() => { animeFav(item.title) }} />
                 );
-              }
+              // }
             })}
           </div>
         </Route>
