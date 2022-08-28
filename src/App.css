@@ -110,3 +110,35 @@
 
 
 }
+
+@media (min-width:320px) and (max-width:767px){
+  .main{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+  .randomBook{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+  .imgR{
+    margin: auto;
+    height: 200px;
+    width: 120px;
+  }
+}
+@media (min-width:767px) and (max-width:1024px){
+  .main{
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+  }
+}
+@media (min-width:2560px){
+  .main{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 200px 200px 200px 200px 200px 200px 200px 200px;
+  }
+}
