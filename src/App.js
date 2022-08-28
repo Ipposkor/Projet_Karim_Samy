@@ -24,49 +24,38 @@ function App() {
   const [home, setHome] = useState('iconNone')
   const [filteredInput, setFilteredInput] = useState("");
 
-
-  console.log(filteredInput)
-
   // add to favourite
   const addFavouriteMovie = (movie) => {
     if (!myFavorite.includes(movie)) {
       const newFavouriteList = [...myFavorite, movie];
       setMyFavorite(newFavouriteList);
+      saveToLocalStorage(newFavouriteList);
     }
-    // saveToLocalStorage(newFavouriteList);
   };
 
   // remove from favorite
   const removeFavouriteMovie = (movie) => {
     const newFavouriteList = myFavorite.filter(
       (favorite) => favorite.id !== movie.id
-
     );
     setMyFavorite(newFavouriteList)
+    saveToLocalStorage(newFavouriteList);
   }
 
-  //   setMyFavorite(newFavouriteList);
-  //   // saveToLocalStorage(newFavouriteList);
-  // };
 
+  useEffect(() => {
+    const movieFavourites = JSON.parse(
+      localStorage.getItem('react-movie-app-favourites')
+    );
 
-  // const saveToLocalStorage = (item) => {
-  //   localStorage.setItem('react-books-app', JSON.stringify(item))
-  // }
-  // const animeFav = (book) => {
-  //   // saveToLocalStorage(book)
-  //   setAnime((prevBook) => {
-  //     const onRead = [book, ...prevBook]
-  //     saveToLocalStorage(onRead)
-  //     return (onRead);
-  //   })
-  // }
+    if (movieFavourites) {
+      setMyFavorite(movieFavourites);
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   const bookFavorite = JSON.parse(localStorage.getItem('react-books-app'))
-  //   if (bookFavorite !== null) setAnime(bookFavorite)
-  // }, [])
-
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem('react-movie-app-favourites', JSON.stringify(items));
+  };
 
   const inputChangeHandler = (selectedAnime) => {
     setFilteredInput(selectedAnime);

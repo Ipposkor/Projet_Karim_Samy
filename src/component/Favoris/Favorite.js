@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import booknot from '../../images/open-book.png'
+// import booknot from '../../images/open-book.png'
 import './Favorite.css'
 import Content from './Content'
 import CheckBox from './CheckBox'
 import close from '../../images/close.png'
 import axios from 'axios';
-
 import cancel from '../../images/clear.png'
 import Empty from './Empty'
 import { book } from 'fontawesome'
@@ -25,6 +24,8 @@ const Favorite = (props) => {
 
     const [isChecked, setIsChecked] = useState(true);
     const [isContent, setIsContent] = useState(true);
+    const [isSeen, setIsSeen] = useState(false);
+
     const [books, setBooks] = useState([]);
 
     const toggleCheck = (e) => {
@@ -38,6 +39,16 @@ const Favorite = (props) => {
     console.log(books);
 
 
+
+    // const toggleCheckSeen = (book) => {
+    //     // let books = book.target.currentSrc
+    //     // let bk = book.target.id
+    //     setIsSeen(!isSeen)
+    //     // const test = [...isRead, books]
+
+    //     // setIsRead(checkboxed)
+    //     // saveToLocalStorage(isRead)
+    // }
 
     return (
 
@@ -54,7 +65,8 @@ const Favorite = (props) => {
                             <div className='inner-book'  >
                                 <div className='greenBook'>
                                     <div>
-                                        <CheckBox item={item.id} />
+                                        <CheckBox />
+
                                     </div>
                                     <span className='close' id={item.title}>
                                         <img onClick={() => props.getDel(item)} src={cancel} alt="" />
