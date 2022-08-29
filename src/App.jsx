@@ -10,12 +10,14 @@ import bookShelf from './images/bookshelf.jpg'
 import fav from './images/fav.png'
 import favLike from './images/fav-like.png'
 import Empty from './component/Favoris/Empty';
+// import Filter from './component/Favoris/Filter';
 import Content from './component/Favoris/Content';
+
+
 
 import BookR from './component/randomBook/RandomBook';
 import refresh from './images/refresh.png'
-
-// import { commentSmile, folderTimes } from 'fontawesome';
+import Filter from './component/Favoris/Filter';
 
 
 
@@ -24,10 +26,13 @@ import refresh from './images/refresh.png'
 function App() {
 
   const [movies, setMovies] = useState([])
+  let [moviesVu, setMoviesVu] = useState([])
   const [myFavorite, setMyFavorite] = useState([])
   const [favorite, setFavoritess] = useState('favHeader')
   const [home, setHome] = useState('iconNone')
   const [filteredInput, setFilteredInput] = useState("");
+  const [filtered, setFiltered] = useState('All')
+
 
   // add to favourite
   const addFavouriteMovie = (movie) => {
@@ -35,8 +40,10 @@ function App() {
       const newFavouriteList = [...myFavorite, movie];
       setMyFavorite(newFavouriteList);
       saveToLocalStorage(newFavouriteList);
+
     }
   };
+
 
   // remove from favorite
   const removeFavouriteMovie = (movie) => {
@@ -67,13 +74,12 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get('https://example-data.draftbit.com/books/').then((response) => {
+    axios.get('https://example-data.draftbit.com/books?_page=4&_limit=50').then((response) => {
       setMovies(response.data)
-      // const ele = response
-      // console.log(response)
+
     }).catch(err => { console.log(err) })
   }, [])
-  console.log(movies);
+
 
 
   const changeMenu = () => {
@@ -90,8 +96,8 @@ function App() {
     corp.classList.toggle('active')
     bookrandom.classList.toggle('active')
   }
-  // const randombook = movies[Math.floor(Math.random() * movies.length)]
-  const [book,setBook] = useState('')
+
+  const [book, setBook] = useState('')
   const getBook = () => {
     fetch('https://example-data.draftbit.com/books/')
       .then((res) => res.json())
@@ -100,10 +106,15 @@ function App() {
         setBook(data[randombook])
       })
   }
-  useEffect(() =>{
+  useEffect(() => {
     getBook();
-  },[])
+  }, [])
 
+
+  const filter = (e) => {
+
+    setFiltered(e)
+  }
 
 
   return (
@@ -113,19 +124,22 @@ function App() {
         {/* PAGE FAVORIS */}
 
         <Route path={"/Favoris"}>
+
           <div className='books-shelf' >
           </div>
+          <Filter onChangeFilter={filter} />
+          <div className='myFav'>My Favourites</div>
+
           <div className='tqtt'>
 
-            {myFavorite.length > 0 ? <Favorite name={movies.title} input={filteredInput} getDel={removeFavouriteMovie} item={myFavorite} /> : <Empty />}
-
-          </div>
-        </Route>
+            {myFavorite.length > 0 ? <Favorite name={movies.title} filtered={filtered} input={filteredInput} getDel={removeFavouriteMovie} item={myFavorite} /> : <Empty />}
+          </div >
+        </Route >
 
         {/* PAGE PRINCPALE */}
 
-        <Route path={"/"}>
-          <Banner randomBook={GetR}  />
+        < Route path={"/"} >
+          <Banner randomBook={GetR} />
           <div className='randomBook active'>
             <button className='btnR' onClick={getBook}><img src={refresh} alt="" /></button>
             <p className='titleR'>{book.title}</p>
@@ -133,26 +147,25 @@ function App() {
             <p className='textR'>{book.description}</p>
           </div>
           <div className='main'>
+            {
+              movies.map((item, index) => {
+                if (moviesVu.length < movies.length) {
+                  moviesVu[index] = item
+                  moviesVu[index].vu = false
+                  moviesVu[index].fav = false
 
-            {movies.filter((val) => {
 
-              if (filteredInput == "") {
-                return (val)
-
-              } else if (val.title.toLowerCase().includes(filteredInput.toLowerCase()) && val) {
-                return val
+                }
+                return item.title.toLowerCase().includes(filteredInput.toLowerCase()) ? <Card fav={myFavorite} id={index} key={index} item={moviesVu[index]} goFav={() => addFavouriteMovie(moviesVu[index])} /> : null
               }
-            }).map((item, index) => {
-              return <Card id={index} key={index} item={item} goFav={() => addFavouriteMovie(item)} />
+              )
             }
-            )}
 
-          </div>
-        </Route>
-      </Switch>
+          </div >
+        </Route >
+      </Switch >
     </div >
   );
 }
 
 export default App;
-

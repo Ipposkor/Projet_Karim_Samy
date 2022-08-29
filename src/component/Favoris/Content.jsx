@@ -5,8 +5,7 @@ import CheckBox from './CheckBox';
 const Content = (props) => {
 
     const getID = (e) => {
-        console.log(e.target.id);
-        // props.changeId(e.target.id)
+
     }
     return (
         <div className={'infos'}>
@@ -19,14 +18,13 @@ const Content = (props) => {
                         <h1 id={props.item.title} onClick={getID}>{props.item.title} </h1>
                     </div>
                 </div>
-                <span>Pages: {props.item.num_pages}</span>
+                <span><span className="bold">Pages:</span>  {props.item.num_pages}</span>
                 <br />
-                <span>Score: {props.item.rating}</span>
+                <span><span className="bold">Score: </span> {props.item.rating}</span>
                 <br />
-
-                <span>Genre: {props.item.genres}</span>
+                <span><span className="bold">Genre:</span>  {props.item.genres}</span>
                 <br />
-                <span>{props.item.authors}</span>
+                <span><span className="bold">Authors: </span> {props.item.authors}</span>
 
                 <p>{props.item.description}</p>
             </div>

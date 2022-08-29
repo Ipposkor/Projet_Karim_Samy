@@ -5,6 +5,10 @@
     height: 20vh;
 }
 
+body {
+    background-color: rgb(231, 231, 231);
+}
+
 .testx {
     height: 20vh;
     width: 100%;
@@ -25,7 +29,9 @@
 }
 
 .inner-movie {
+    background-color: rgb(231, 231, 231);
     display: flex;
+    justify-content: center;
     /* height: 400px; */
     /* order: -1; */
     /* flex-wrap: wrap; */
@@ -60,15 +66,23 @@
 .tqtfav {
     display: flex;
     flex-wrap: wrap;
+    /* justify-content: end; */
+    /* text-align: center */
+    justify-content: center;
+    width: 100%;
 
+}
+
+.filter-filter {
+    /* position: absolute; */
 }
 
 .img-img {
     height: 400px;
-    width: 200px;
+    width: 250px;
     margin-bottom: 40px;
     /* width: 100%; */
-    filter: drop-shadow(15px 10px 4px #0000003b);
+    filter: drop-shadow(15px 10px 4px #3a38382b);
     cursor: pointer;
     /* opacity: 0.5; */
 

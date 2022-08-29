@@ -1,0 +1,10 @@
+.filter-select {
+    display: flex;
+    margin: 20px 0px 10px 40px;
+    /* padding: 20px; */
+}
+
+.inner-filter {
+    padding: 5px;
+    border-radius: 5px;
+}
