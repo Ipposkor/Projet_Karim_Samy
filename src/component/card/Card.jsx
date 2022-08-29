@@ -8,13 +8,13 @@ import { useState } from 'react';
 
 
 function Card(props) {
-    function getID(e) {
-        props.goFav(e.target.id);
+    function getID() {
+        props.goFav();
         setIsSeen(!isSeen);
-        if (props.stock.includes(props.item.title)){
-            let delfav = props.stock.indexOf(props.item.title)
-            props.stock.splice(delfav, 1)
-            }
+        // if (props.stock.includes(props.item.title)){
+        //     let delfav = props.stock.indexOf(props.item.title)
+        //     props.stock.splice(delfav, 1)
+        //     }
     }
     const [isSeen, setIsSeen] = useState(false);
 
@@ -24,7 +24,7 @@ function Card(props) {
             <div className='card'>
                 <div className='faceCover'>
                     <img className='img' src={props.item.image_url} alt="" />
-                    <img className='fav' src={checkboxed} alt="" id={props.item.title} onClick={getID}/>
+                    <img className='fav' src={checkboxed} alt="" id={props.item.title} onClick={getID} />
                 </div>
                 <div className='cardSide'>
                     <span className='title'>{props.item.title}</span>
